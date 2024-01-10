@@ -16,7 +16,7 @@ class DetailPage extends StatelessWidget {
           if (state is DetailpageLoaded) {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (BuildContext context) {
-              return const HomePage();
+              return HomePage();
             }));
           }
         }, builder: (context, state) {

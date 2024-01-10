@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
           providers: [
             BlocProvider(
               create: (context) => NavigationCubit(),
-              child: const HomePage(),
+              child: HomePage(),
             ),
           ],
           child: MaterialApp(
-            home: const HomePage(),
+            home: HomePage(),
           ));
 }

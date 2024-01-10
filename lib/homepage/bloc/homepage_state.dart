@@ -1,27 +1,28 @@
 part of 'homepage_bloc.dart';
 
-// sealed class HomepageState extends Equatable {
-//   const HomepageState();
-
-//   @override
-//   List<Object> get props => [];
-// }
-
 abstract class HomepageState extends Equatable {
   const HomepageState();
+  @override
+  List<Object?> get props => [];
+  MaterialColor? get color => Colors.blueGrey;
 }
 
-final class HomepageInitial extends HomepageState {
+final class HomepageInitial extends HomepageState {}
+
+@override
+class DrawCircleState extends HomepageState {
+  final MaterialColor? colors;
+  const DrawCircleState(this.colors);
+
   @override
-  List<Object?> get props => throw UnimplementedError();
+  MaterialColor? get color => colors;
 }
 
-final class HomepageLoading extends HomepageState {
-  @override
-  List<Object?> get props => throw UnimplementedError();
-}
+@override
+class DrawSquareState extends HomepageState {
+  final MaterialColor? colors;
+  const DrawSquareState(this.colors);
 
-final class HomepageLoadSuccess extends HomepageState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  MaterialColor? get color => colors;
 }
