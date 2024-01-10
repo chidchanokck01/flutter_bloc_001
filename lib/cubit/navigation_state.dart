@@ -4,19 +4,20 @@ abstract class NavigationState extends Equatable {
   const NavigationState();
   @override
   List<Object?> get props => [];
+  Color? get colorBg => Colors.black;
 }
 
 class HomePageState extends NavigationState {
-  final String? extraPageContent;
-  const HomePageState([this.extraPageContent]);
-  @override
-  List<Object?> get props => [extraPageContent];
+  // final String? extraPageContent;
+  // const HomePageState([this.extraPageContent]);
+  // @override
+  // List<Object?> get props => [extraPageContent];
 }
 
 class DetailPageState extends NavigationState {
-  final String? extraPageContent;
-  const DetailPageState([this.extraPageContent]);
+  final Color? colorContent;
+  const DetailPageState(this.colorContent);
 
   @override
-  List<Object?> get props => [extraPageContent];
+  Color? get colorBg => colorContent;
 }
