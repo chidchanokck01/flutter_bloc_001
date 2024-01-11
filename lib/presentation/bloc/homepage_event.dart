@@ -10,3 +10,4 @@ abstract class HomepageEvent extends Equatable {
 class DrawCircleEvent extends HomepageEvent {}
 
 class DrawSquareEvent extends HomepageEvent {}
+

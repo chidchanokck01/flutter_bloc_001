@@ -9,18 +9,11 @@ part 'homepage_state.dart';
 
 class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
   HomepageBloc() : super(HomepageInitial()) {
-    // on<HomepageEvent>((event, emit) {
-    //   // print(state);
-    //   if (event is DrawCircleEvent) {
-    //     emit(DrawCircleState(changeColor()));
-    //   } else if (event is DrawSquareState) {
-    //     emit(DrawSquareState(changeColor()));
-    //   }
-    // });
+    on<HomepageEvent>((event, emit) {});
 
     // Add DrawCircleState
     on<DrawCircleEvent>((event, emit) {
-      print(changeColor());
+      // print(changeColor());
       emit(DrawCircleState(changeColor()));
     });
 
@@ -29,16 +22,19 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
       emit(DrawSquareState(changeColor()));
     });
 
-    onChange(Change<HomepageState> change) {
-      print('change');
-    }
+    // // Add Event
+    // on<CounterAEventAdd>((event, emit) {
+    //   print(state.counts + 1);
+    //   emit(CounterAState(count: state.counts + 1));
+    // });
+
+    // // Reset Event
+    // on<CounterAEventReset>((event, emit) {
+    //   emit(CounterAState(count: 0));
+    // });
   }
 
-  // @override // WORKING
-  // void onChange(Change<HomepageState> change) {
-  //   super.onChange(change);
-  //   print(change);
-  // }
+
 
   @override
   MaterialColor changeColor() {

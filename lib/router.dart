@@ -1,18 +1,20 @@
-// part of 'main.dart';
+part of 'main.dart';
 
-// // GoRouter configuration
-// final _router = GoRouter(
-//   initialLocation: '/',
-//   routes: [
-//     GoRoute(
-//       name: 'home',
-//       path: '/',
-//       builder: (context, state) => const HomePage(),
-//     ),
-//     GoRoute(
-//       name: 'detail',
-//       path: '/detail',
-//       builder: (context, state) => DetailPage(),
-//     ),
-//   ],
-// );
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomePage();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'details',
+          builder: (BuildContext context, GoRouterState state) {
+            return const DetailPage();
+          },
+        ),
+      ],
+    ),
+  ],
+);

@@ -9,16 +9,20 @@ abstract class HomepageState extends Equatable {
 
 final class HomepageInitial extends HomepageState {}
 
-@override
+// @override
 class DrawCircleState extends HomepageState {
   final MaterialColor? colors;
   const DrawCircleState(this.colors);
+
+  DrawCircleState copyWith(MaterialColor? colors) {
+    return DrawCircleState(colors ?? this.colors);
+  }
 
   @override
   MaterialColor? get color => colors;
 }
 
-@override
+// @override
 class DrawSquareState extends HomepageState {
   final MaterialColor? colors;
   const DrawSquareState(this.colors);
@@ -26,3 +30,5 @@ class DrawSquareState extends HomepageState {
   @override
   MaterialColor? get color => colors;
 }
+
+
