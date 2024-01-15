@@ -13,7 +13,6 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
 
     // Add DrawCircleState
     on<DrawCircleEvent>((event, emit) {
-      // print(changeColor());
       emit(DrawCircleState(changeColor()));
     });
 
@@ -22,21 +21,18 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
       emit(DrawSquareState(changeColor()));
     });
 
-    // // Add Event
-    // on<CounterAEventAdd>((event, emit) {
-    //   print(state.counts + 1);
-    //   emit(CounterAState(count: state.counts + 1));
-    // });
+    // Add Event
+    on<CounterAEventAdd>((event, emit) {
+      // print(state.props);
+      // emit(CounterAState( state.props + 1));
+    });
 
-    // // Reset Event
-    // on<CounterAEventReset>((event, emit) {
-    //   emit(CounterAState(count: 0));
-    // });
+    // Reset Event
+    on<CounterAEventReset>((event, emit) {
+      emit(const CounterAState(0));
+    });
   }
 
-
-
-  @override
   MaterialColor changeColor() {
     var list = [
       Colors.red,

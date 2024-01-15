@@ -21,8 +21,8 @@ class NavigationCubit extends Cubit<NavigationState> {
       Colors.blue
     ];
 
-    final _random = Random();
-    Color element = list[_random.nextInt(list.length)];
+    final random = Random();
+    Color element = list[random.nextInt(list.length)];
     emit(DetailPageState(element));
   }
 }

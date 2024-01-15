@@ -7,7 +7,7 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('splash'),
+        title: const Text('splash'),
       ),
       body: Center(
           child: Container(

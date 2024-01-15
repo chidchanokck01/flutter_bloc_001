@@ -14,6 +14,20 @@ final GoRouter _router = GoRouter(
             return const DetailPage();
           },
         ),
+        GoRoute(
+          path: 'calculator',
+          builder: (BuildContext context, GoRouterState state) {
+            return const CalculatorPage();
+          },
+          routes: <RouteBase>[
+            GoRoute(
+              path: 'calculator2',
+              builder: (BuildContext context, GoRouterState state) {
+                return const Calculator2Page();
+              },
+            ),
+          ],
+        ),
       ],
     ),
   ],
