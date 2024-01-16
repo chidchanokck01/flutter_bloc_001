@@ -4,6 +4,7 @@ abstract class HomepageState extends Equatable {
   const HomepageState();
   @override
   List<Object?> get props => [];
+  int? get count => 0;
 }
 
 final class HomepageInitial extends HomepageState {}
@@ -33,14 +34,23 @@ class DrawSquareState extends HomepageState {
   List<Object?> get props => [colors];
 }
 
-class CounterAState extends HomepageState {
-  final int? number;
-  const CounterAState(this.number);
+class CounterState extends HomepageState {
+  @override
+  final int? count;
+  const CounterState(this.count);
 
-  CounterAState copyWith(int? number) {
-    return CounterAState(number ?? this.number);
+  CounterState copyWith(int? count) {
+    return CounterState(count ?? this.count);
   }
 
   @override
-  List<Object?> get props => [number];
+  List<Object?> get props => [count];
+}
+
+class CounterReset extends HomepageState {
+  @override
+  const CounterReset();
+
+  @override
+  List<Object?> get props => [0];
 }

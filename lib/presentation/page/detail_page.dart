@@ -18,23 +18,10 @@ class DetailPage extends StatelessWidget {
           //   }));
           // }
         }, builder: (context, state) {
-          return Scaffold(
-            body: Center(
-              child: ElevatedButton(
-                onPressed: () => (),
-                child: const Text('Go to Home Page'),
-              ),
-            ),
+          return ElevatedButton(
+            onPressed: () => (),
+            child: const Text('Go to Home Page'),
           );
         }));
-
-    // return Scaffold(
-    //   body: Center(
-    //     child: ElevatedButton(
-    //       onPressed: () => context.read<NavigationCubit>().goToHome(),
-    //       child: const Text('Go to Home Page'),
-    //     ),
-    //   ),
-    // );
   }
 }

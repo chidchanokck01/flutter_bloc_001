@@ -22,14 +22,13 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
     });
 
     // Add Event
-    on<CounterAEventAdd>((event, emit) {
-      // print(state.props);
-      // emit(CounterAState( state.props + 1));
+    on<CounterEventAdd>((event, emit) {
+      emit(const CounterState(0).copyWith(state.count! + 1));
     });
 
     // Reset Event
-    on<CounterAEventReset>((event, emit) {
-      emit(const CounterAState(0));
+    on<CounterEventReset>((event, emit) {
+      emit(const CounterReset());
     });
   }
 

@@ -11,7 +11,7 @@ class DrawCircleEvent extends HomepageEvent {}
 
 class DrawSquareEvent extends HomepageEvent {}
 
-class CounterAEventAdd extends HomepageEvent {}
+class CounterEventAdd extends HomepageEvent {}
 
-class CounterAEventReset extends HomepageEvent {}
+class CounterEventReset extends HomepageEvent {}
 
