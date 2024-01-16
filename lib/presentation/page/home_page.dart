@@ -41,21 +41,19 @@ class HomePage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Expanded(
-                        child: ElevatedButton(
+                    child: ElevatedButton(
                       onPressed: () =>
                           context.read<HomepageBloc>().add(DrawCircleEvent()),
                       child: const Text('Draw Circle'),
-                    )),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Expanded(
-                        child: ElevatedButton(
+                    child: ElevatedButton(
                       onPressed: () =>
                           context.read<HomepageBloc>().add(DrawSquareEvent()),
                       child: const Text('DrawSquareEvent'),
-                    )),
+                    ),
                   )
                 ],
               ),
@@ -92,4 +90,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

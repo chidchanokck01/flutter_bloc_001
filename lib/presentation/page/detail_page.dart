@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_001/presentation/bloc/homepage_bloc.dart';
-import 'package:flutter_bloc_001/presentation/cubit/navigation_cubit.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -22,7 +21,7 @@ class DetailPage extends StatelessWidget {
           return Scaffold(
             body: Center(
               child: ElevatedButton(
-                onPressed: () => context.read<NavigationCubit>().goToHome(),
+                onPressed: () => (),
                 child: const Text('Go to Home Page'),
               ),
             ),

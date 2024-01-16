@@ -7,250 +7,341 @@ class CalculatorPage extends StatelessWidget {
   const CalculatorPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter basic calculator',
-      home: Scaffold(
-        body: BlocConsumer<CalculatorBloc, CalculatorState>(
-          builder: (BuildContext context, CalculatorState state) {
-            return Center(
-              child: Row(
-                children: [
-                  Flexible(
-                      child: ElevatedButton(
-                    onPressed: () => context.pop(),
-                    child: Container(
-                      width: 100,
-                      height: 50,
-                      decoration: const BoxDecoration(color: Colors.black),
-                      child: const Center(
-                        child: Text(
-                          'Back Page',
-                          style: TextStyle(),
-                        ),
-                      ),
-                    ),
-                  )),
-                  Expanded(
-                      flex: 5,
-                      child: AspectRatio(
-                        aspectRatio: 0.5,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: 50.0,
-                            height: 25.0,
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // Flexible(flex: 2, child: displayCal(state)),
-                                // Flexible(
-                                //     flex: 2,
-                                //     child: Row(
-                                //       children: [
-                                //         Flexible(child: numberButton(state)),
-                                //         Flexible(child: operatorButton(state)),
-                                //       ],
-                                //     )),
-
-                              //   Stack(
-                              //     children: <Widget>[
-                              //       Container(
-                              //         width: 100,
-                              //         height: 100,
-                              //         color: Colors.red,
-                              //       ),
-                              //       Container(
-                              //         width: 90,
-                              //         height: 90,
-                              //         color: Colors.green,
-                              //       ),
-                              //       Container(
-                              //         width: 80,
-                              //         height: 80,
-                              //         color: Colors.blue,
-                              //       ),
-                              //     ],
-                              //   )
-                              // ],
-                            ),
-                          ),
-                        ),
-                      )),
-                  Flexible(
-                    child: ElevatedButton(
-                      onPressed: () => context.go('/calculator/calculator2'),
-                      child: Container(
-                        width: 100,
-                        height: 50,
-                        decoration: const BoxDecoration(color: Colors.black),
-                        child: const Center(
-                          child: Text(
-                            'Next Page',
-                            style: TextStyle(),
-                          ),
-                        ),
-                      ),
+    return BlocConsumer<CalculatorBloc, CalculatorState>(
+      builder: (BuildContext context, CalculatorState state) {
+        return Center(
+          child: Row(
+            children: [
+              ElevatedButton(
+                onPressed: () => context.pop(),
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: const BoxDecoration(color: Colors.black),
+                  child: const Center(
+                    child: Text(
+                      'Back Page',
+                      style: TextStyle(),
                     ),
                   ),
-                ],
+                ),
               ),
-            );
-          },
-          listener: (BuildContext context, CalculatorState state) {},
-        ),
-      ),
-    );
-  }
-
-  Widget displayCal(CalculatorState state) {
-    return Container(
-      decoration: const BoxDecoration(color: Colors.black),
-      child: Text(state.props.toString()),
-    );
-  }
-
-  Widget operatorButton(CalculatorState state) {
-    return Column(children: [
-      ElevatedButton(
-        onPressed: () => (),
-        child: Text('/'),
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-        ),
-      ),
-      ElevatedButton(
-        onPressed: () => (),
-        child: Text('*'),
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-        ),
-      ),
-      ElevatedButton(
-        onPressed: () => (),
-        child: const Text('-'),
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-        ),
-      ),
-      ElevatedButton(
-        onPressed: () => (),
-        child: const Text('+'),
-        style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(),
-        ),
-      ),
-    ]);
-  }
-
-  Widget numberButton(CalculatorState state) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('7'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.35,
+                        height: 100,
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                topLeft: Radius.circular(10))),
+                        child: Text(
+                          state.calculationModel.toString(),
+                          style: const TextStyle(color: Colors.amber),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.35,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        decoration: const BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(10),
+                                bottomLeft: Radius.circular(10))),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 7)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('7'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 4)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('4'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 1)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('1'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(CalculateClear()),
+                                        style: ElevatedButton.styleFrom(
+                                            shape: const CircleBorder(),
+                                            backgroundColor: Colors.amber),
+                                        child: const Text('c'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 8)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('8'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 5)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('5'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 2)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('2'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 0)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('0'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 9)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('9'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 6)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('6'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(
+                                                const NumberPressed(number: 3)),
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                        ),
+                                        child: const Text('3'),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      height: 70,
+                                      child: ElevatedButton(
+                                        onPressed: () => context
+                                            .read<CalculatorBloc>()
+                                            .add(CalculateResult()),
+                                        style: ElevatedButton.styleFrom(
+                                            shape: const CircleBorder(),
+                                            backgroundColor: Colors.amber),
+                                        child: const Text('='),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(children: [
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.05,
+                                    height: 70,
+                                    child: ElevatedButton(
+                                      onPressed: () => context
+                                          .read<CalculatorBloc>()
+                                          .add(const OperatorPressed(
+                                              operator: '/')),
+                                      style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                          backgroundColor: Colors.amber),
+                                      child: const Text('/'),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.05,
+                                    height: 70,
+                                    child: ElevatedButton(
+                                      onPressed: () => context
+                                          .read<CalculatorBloc>()
+                                          .add(const OperatorPressed(
+                                              operator: '*')),
+                                      style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                          backgroundColor: Colors.amber),
+                                      child: const Text('*'),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.05,
+                                    height: 70,
+                                    child: ElevatedButton(
+                                      onPressed: () => context
+                                          .read<CalculatorBloc>()
+                                          .add(const OperatorPressed(
+                                              operator: '-')),
+                                      style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                          backgroundColor: Colors.amber),
+                                      child: const Text('-'),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.05,
+                                    height: 70,
+                                    child: ElevatedButton(
+                                      onPressed: () => context
+                                          .read<CalculatorBloc>()
+                                          .add(const OperatorPressed(
+                                              operator: '+')),
+                                      style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(),
+                                          backgroundColor: Colors.amber),
+                                      child: const Text('+'),
+                                    ),
+                                  ),
+                                ])
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('8'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
+              ElevatedButton(
+                onPressed: () => context.go('/calculator/calculator2'),
+                child: Container(
+                  width: 100,
+                  height: 50,
+                  decoration: const BoxDecoration(color: Colors.black),
+                  child: const Center(
+                    child: Text(
+                      'Next Page',
+                      style: TextStyle(),
+                    ),
+                  ),
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: const Text('9'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('4'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('5'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('6'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('1'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('2'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: const Text('3'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('C'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: Text('0'),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => (),
-              child: const Text('='),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-              ),
-            ),
-          ],
-        )
-      ],
+            ],
+          ),
+        );
+      },
+      listener: (BuildContext context, CalculatorState state) {
+        if (state is CalculationInitial) {}
+      },
     );
   }
 }

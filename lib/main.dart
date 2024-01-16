@@ -36,22 +36,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// void main() {
-//   setUrlStrategy(PathUrlStrategy());
-//   runApp(MaterialApp(
-//     home: MyApp(),
-//   ));
-// }
-
-// class MyApp extends StatefulWidget {
-//   @override
-//   _MyAppState createState() => _MyAppState();
-// }
-
-// class _MyAppState extends State<MyApp> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const SplashPage();
-//   }
-// }

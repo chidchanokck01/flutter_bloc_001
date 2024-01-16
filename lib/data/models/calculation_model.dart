@@ -14,19 +14,32 @@ class CalculationModel extends Equatable {
 
   @override
   String toString() {
+    if (firstOperand == null &&
+        operator == null &&
+        secondOperand == null &&
+        result == null) {
+      return "0";
+    }
+    if (operator == null) {
+      return "$firstOperand";
+    }
+    if (secondOperand == null) {
+      return "$firstOperand$operator";
+    }
+    if (result == null) {
+      return "$firstOperand$operator$secondOperand";
+    }
+
     return "$firstOperand$operator$secondOperand=$result";
   }
 
-  CalculationModel copyWith({
-      required int Function() firstOperand,
-      required String Function() operator,
-      required int Function() secondOperand,
-      required int Function() result}) {
+  CalculationModel copyWith(
+      {int? firstOperand, String? operator, int? secondOperand, int? result}) {
     return CalculationModel(
-      firstOperand: firstOperand.call(),
-      operator: operator.call(),
-      secondOperand: secondOperand.call() ,
-      result: result.call(),
+      firstOperand: firstOperand,
+      operator: operator,
+      secondOperand: secondOperand,
+      result: result,
     );
   }
 
