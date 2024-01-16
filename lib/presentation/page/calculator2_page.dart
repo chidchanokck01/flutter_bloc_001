@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_001/presentation/bloc/homepage_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class Calculator2Page extends StatelessWidget {
   const Calculator2Page({super.key});
@@ -41,7 +42,7 @@ class Calculator2Page extends StatelessWidget {
                     ],
                   ),
                   ElevatedButton(
-                    onPressed: () => (),
+                    onPressed: () => context.pop(),
                     child: const Text('Go to Home Page'),
                   ),
                 ],
