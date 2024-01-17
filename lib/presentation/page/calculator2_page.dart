@@ -42,7 +42,7 @@ class Calculator2Page extends StatelessWidget {
                     ],
                   ),
                   ElevatedButton(
-                    onPressed: () => context.pop(),
+                    onPressed: () => context.goNamed('main'),
                     child: const Text('Go to Home Page'),
                   ),
                 ],

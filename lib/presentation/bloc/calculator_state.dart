@@ -1,6 +1,6 @@
 part of 'calculator_bloc.dart';
 
-sealed class CalculatorState extends Equatable {
+abstract class CalculatorState extends Equatable {
   final CalculationModel calculationModel;
 
   const CalculatorState({required this.calculationModel});
@@ -16,7 +16,7 @@ class CalculationInitial extends CalculatorState {
 
 class CalculationChanged extends CalculatorState {
   @override
-  final CalculationModel calculationModel ;
+  final CalculationModel calculationModel;
 
   const CalculationChanged({required this.calculationModel})
       : super(calculationModel: calculationModel);

@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () =>
                           context.read<HomepageBloc>().add(DrawSquareEvent()),
-                      child: const Text('DrawSquareEvent'),
+                      child: const Text('Draw Square'),
                     ),
                   )
                 ],
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () => context.go('/calculator'),
+                    onPressed: () => context.goNamed('calculator'),
                     child: Container(
                       width: 100,
                       height: 50,
@@ -81,11 +81,11 @@ class HomePage extends StatelessWidget {
         );
       },
       listener: (BuildContext context, HomepageState state) {
-        if (state is DrawCircleState) {
-          context.read<HomepageBloc>().add(DrawCircleEvent());
-        } else {
-          context.read<HomepageBloc>().add(DrawSquareEvent());
-        }
+        // if (state is DrawCircleState) {
+        //   context.read<HomepageBloc>().add(DrawCircleEvent());
+        // } else {
+        //   context.read<HomepageBloc>().add(DrawSquareEvent());
+        // }
       },
     );
   }

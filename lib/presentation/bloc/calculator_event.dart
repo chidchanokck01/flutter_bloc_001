@@ -1,6 +1,6 @@
 part of 'calculator_bloc.dart';
 
-sealed class CalculatorEvent extends Equatable {
+abstract  class CalculatorEvent extends Equatable {
   const CalculatorEvent();
 }
 

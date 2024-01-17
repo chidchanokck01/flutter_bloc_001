@@ -322,7 +322,7 @@ class CalculatorPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () => context.go('/calculator/calculator2'),
+                onPressed: () => context.goNamed('calculator2'),
                 child: Container(
                   width: 100,
                   height: 50,

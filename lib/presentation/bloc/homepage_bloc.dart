@@ -9,7 +9,9 @@ part 'homepage_state.dart';
 
 class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
   HomepageBloc() : super(HomepageInitial()) {
-    on<HomepageEvent>((event, emit) {});
+    on<HomepageEvent>((event, emit) {
+      
+    });
 
     // Add DrawCircleState
     on<DrawCircleEvent>((event, emit) {
@@ -30,6 +32,8 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
     on<CounterEventReset>((event, emit) {
       emit(const CounterReset());
     });
+
+
   }
 
   MaterialColor changeColor() {
